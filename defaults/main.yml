@@ -1,0 +1,38 @@
+---
+app_environment: dev
+app_is_production: false
+app_http_user: www-data
+
+app_exclude_paths:
+  - ".env"
+  - ".git"
+  - "bootstrap/cache"
+  - "database/*.sqlite*"
+  - "node_modules"
+  - "storage"
+  - "vendor"
+
+app_shared_paths:
+  - "storage"
+
+app_writable_paths:
+  - "bootstrap/cache"
+  - "storage"
+  - "storage/app"
+  - "storage/app/public"
+  - "storage/framework"
+  - "storage/framework/cache"
+  - "storage/framework/cache/data"
+  - "storage/framework/sessions"
+  - "storage/framework/views"
+  - "storage/logs"
+
+app_artisan_commands:
+  - command: "php artisan storage:link"
+  - command: "php artisan config:cache"
+  - command: "php artisan route:cache"
+  - command: "php artisan view:cache"
+  - command: "php artisan event:cache"
+  - command: "php artisan migrate --force"
+
+app_docker_command: "docker compose exec php sh -c 'cd releases/{{ ansistrano_release_version }} && {{ item.command }}'"

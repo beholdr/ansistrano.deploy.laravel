@@ -1,0 +1,20 @@
+---
+- name: Copy compose file
+  vars:
+    compose_file: "{{ ansistrano_deploy_from }}/compose.{{ app_environment }}.yml"
+  block:
+    - name: Copy compose file
+      ansible.builtin.template:
+        src: "{{ compose_file }}"
+        dest: "{{ ansistrano_release_path.stdout }}/compose.yml"
+
+    - name: Remove original compose file
+      ansible.builtin.file:
+        dest: "{{ ansistrano_release_path.stdout }}/compose.{{ app_environment }}.yml"
+        state: absent
+  when: compose_file is exists
+
+- name: Docker compose up, could take some time...
+  ansible.builtin.command:
+    cmd: "docker compose up -d --build"
+    chdir: "{{ ansistrano_release_path.stdout }}"

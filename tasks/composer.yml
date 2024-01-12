@@ -1,0 +1,15 @@
+---
+- name: Run composer install
+  ansible.builtin.command:
+    cmd: "{{ app_docker_command }}"
+    chdir: "{{ ansistrano_release_path.stdout }}"
+  when: item.enabled | default(true)
+  loop:
+    - command: "composer install --prefer-dist --no-progress --no-interaction --optimize-autoloader"
+      enabled: "{{ not app_is_production }}"
+
+    - command: "composer install --prefer-dist --no-progress --no-interaction --optimize-autoloader --no-dev"
+      enabled: "{{ app_is_production }}"
+
+    - command: "composer dump-autoload --classmap-authoritative"
+      enabled: "{{ app_is_production }}"
