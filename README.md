@@ -12,9 +12,6 @@ roles:
   - name: ansistrano.deploy.laravel
     src: https://github.com/beholdr/ansistrano.deploy.laravel
 
-  - name: ansistrano.deploy
-    version: 3.14.0
-
 collections:
   - name: ansible.posix
     version: 1.5.4
