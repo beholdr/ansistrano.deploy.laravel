@@ -32,7 +32,6 @@ servers:
       app_url: dev.sitename.com
       app_path: /srv/sitename-dev
       app_environment: dev
-      app_is_production: false
     production:
       ...
 ```
@@ -79,22 +78,34 @@ Files could be plain or encrypted with ansible vault. Corresponding file (determ
 The `defaults` role vars:
 
 - `app_environment`: environment (default: `dev`)
-- `app_is_production`: flag for production environment (default: `false`)
 - `app_http_user`: user name for files ownership (default `www-data`)
 - `app_exclude_paths`: list of paths to exclude by rsync
 - `app_shared_paths`: list of paths to use as shared between releases
 - `app_writable_paths`: list of paths to create and set writable
-- `app_artisan_commands`: list of artisan commands to run on deployment
+- `app_docker_commands`: list of commands to run in the docker container on deployment
 
 ### Artisan commands with conditions
 
 Every artisan command can include `enabled` field to determine if it should run.
-For example, you can enable seeding on the non-production environment:
+For example, you can enable DB seeding on the non-production environment:
 
 ```yml
 - command: "php artisan migrate:fresh --seed --force"
-  enabled: "{{ not app_is_production }}"
+  enabled: "{{ app_environment == 'dev' }}"
 
 - command: "php artisan migrate --force"
-  enabled: "{{ app_is_production }}"
+  enabled: "{{ app_environment == 'production' }}"
+```
+
+### Default commands
+
+```yml
+- command: "composer install --prefer-dist --no-progress --no-interaction --optimize-autoloader --no-dev"
+- command: "composer dump-autoload --classmap-authoritative"
+- command: "php artisan storage:link"
+- command: "php artisan config:cache"
+- command: "php artisan route:cache"
+- command: "php artisan view:cache"
+- command: "php artisan event:cache"
+- command: "php artisan migrate --force"
 ```

@@ -1,6 +1,5 @@
 ---
 app_environment: dev
-app_is_production: false
 app_http_user: www-data
 
 app_exclude_paths:
@@ -27,7 +26,9 @@ app_writable_paths:
   - "storage/framework/views"
   - "storage/logs"
 
-app_artisan_commands:
+app_docker_commands:
+  - command: "composer install --prefer-dist --no-progress --no-interaction --optimize-autoloader --no-dev"
+  - command: "composer dump-autoload --classmap-authoritative"
   - command: "php artisan storage:link"
   - command: "php artisan config:cache"
   - command: "php artisan route:cache"
@@ -35,4 +36,4 @@ app_artisan_commands:
   - command: "php artisan event:cache"
   - command: "php artisan migrate --force"
 
-app_docker_command: "docker compose exec php sh -c 'cd releases/{{ ansistrano_release_version }} && {{ item.command }}'"
+app_docker_exec: "docker compose exec php sh -c 'cd releases/{{ ansistrano_release_version }} && {{ item.command }}'"

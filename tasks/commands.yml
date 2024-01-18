@@ -1,7 +1,7 @@
 ---
-- name: Run artisan commands
+- name: Run commands
   ansible.builtin.command:
-    cmd: "{{ app_docker_command }}"
+    cmd: "{{ app_docker_exec }}"
     chdir: "{{ ansistrano_release_path.stdout }}"
   when: item.enabled | default(true)
-  loop: "{{ app_artisan_commands }}"
+  loop: "{{ app_docker_commands }}"
