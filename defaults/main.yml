@@ -28,12 +28,16 @@ app_writable_paths:
 
 app_docker_commands:
   - command: composer install --prefer-dist --no-progress --no-interaction --optimize-autoloader --no-dev
+    root: true
   - command: composer dump-autoload --classmap-authoritative
+    root: true
   - command: php artisan storage:link
+    root: true
   - command: php artisan config:cache
   - command: php artisan route:cache
   - command: php artisan view:cache
   - command: php artisan event:cache
   - command: php artisan migrate --force
 
-app_docker_exec: "docker compose exec php sh -c 'cd releases/{{ ansistrano_release_version }} && {{ item.command }}'"
+app_docker_exec: "docker compose exec --user {{ app_http_user }} php sh -c 'cd releases/{{ ansistrano_release_version }} && {{ item.command }}'"
+app_docker_exec_as_root: "docker compose exec php sh -c 'cd releases/{{ ansistrano_release_version }} && {{ item.command }}'"
