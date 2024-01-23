@@ -97,12 +97,19 @@ For example, you can enable DB seeding on the non-production environment:
   enabled: "{{ app_environment == 'production' }}"
 ```
 
+### Run command as root
+
+By default commands run as `app_http_user`. But some commands (e.g. `composer install`) may require root privileges. You can add `root: true` flag in this case.
+
 ### Default commands
 
 ```yml
 - command: composer install --prefer-dist --no-progress --no-interaction --optimize-autoloader --no-dev
+  root: true
 - command: composer dump-autoload --classmap-authoritative
+  root: true
 - command: php artisan storage:link
+  root: true
 - command: php artisan config:cache
 - command: php artisan route:cache
 - command: php artisan view:cache
