@@ -3,37 +3,37 @@ app_environment: dev
 app_http_user: www-data
 
 app_exclude_paths:
-  - ".env"
-  - ".git"
-  - "bootstrap/cache"
-  - "database/*.sqlite*"
-  - "node_modules"
-  - "storage"
-  - "vendor"
+  - .env
+  - .git
+  - bootstrap/cache
+  - database/*.sqlite*
+  - node_modules
+  - storage
+  - vendor
 
 app_shared_paths:
-  - "storage"
+  - storage
 
 app_writable_paths:
-  - "bootstrap/cache"
-  - "storage"
-  - "storage/app"
-  - "storage/app/public"
-  - "storage/framework"
-  - "storage/framework/cache"
-  - "storage/framework/cache/data"
-  - "storage/framework/sessions"
-  - "storage/framework/views"
-  - "storage/logs"
+  - bootstrap/cache
+  - storage
+  - storage/app
+  - storage/app/public
+  - storage/framework
+  - storage/framework/cache
+  - storage/framework/cache/data
+  - storage/framework/sessions
+  - storage/framework/views
+  - storage/logs
 
 app_docker_commands:
-  - command: "composer install --prefer-dist --no-progress --no-interaction --optimize-autoloader --no-dev"
-  - command: "composer dump-autoload --classmap-authoritative"
-  - command: "php artisan storage:link"
-  - command: "php artisan config:cache"
-  - command: "php artisan route:cache"
-  - command: "php artisan view:cache"
-  - command: "php artisan event:cache"
-  - command: "php artisan migrate --force"
+  - command: composer install --prefer-dist --no-progress --no-interaction --optimize-autoloader --no-dev
+  - command: composer dump-autoload --classmap-authoritative
+  - command: php artisan storage:link
+  - command: php artisan config:cache
+  - command: php artisan route:cache
+  - command: php artisan view:cache
+  - command: php artisan event:cache
+  - command: php artisan migrate --force
 
 app_docker_exec: "docker compose exec php sh -c 'cd releases/{{ ansistrano_release_version }} && {{ item.command }}'"

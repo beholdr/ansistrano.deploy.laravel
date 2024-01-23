@@ -90,22 +90,22 @@ Every artisan command can include `enabled` field to determine if it should run.
 For example, you can enable DB seeding on the non-production environment:
 
 ```yml
-- command: "php artisan migrate:fresh --seed --force"
+- command: php artisan migrate:fresh --seed --force
   enabled: "{{ app_environment == 'dev' }}"
 
-- command: "php artisan migrate --force"
+- command: php artisan migrate --force
   enabled: "{{ app_environment == 'production' }}"
 ```
 
 ### Default commands
 
 ```yml
-- command: "composer install --prefer-dist --no-progress --no-interaction --optimize-autoloader --no-dev"
-- command: "composer dump-autoload --classmap-authoritative"
-- command: "php artisan storage:link"
-- command: "php artisan config:cache"
-- command: "php artisan route:cache"
-- command: "php artisan view:cache"
-- command: "php artisan event:cache"
-- command: "php artisan migrate --force"
+- command: composer install --prefer-dist --no-progress --no-interaction --optimize-autoloader --no-dev
+- command: composer dump-autoload --classmap-authoritative
+- command: php artisan storage:link
+- command: php artisan config:cache
+- command: php artisan route:cache
+- command: php artisan view:cache
+- command: php artisan event:cache
+- command: php artisan migrate --force
 ```

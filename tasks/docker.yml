@@ -16,5 +16,5 @@
 
 - name: Docker compose up, could take some time...
   ansible.builtin.command:
-    cmd: "docker compose up -d --build"
+    cmd: docker compose up -d --build
     chdir: "{{ ansistrano_release_path.stdout }}"
