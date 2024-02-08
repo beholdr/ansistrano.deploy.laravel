@@ -5,4 +5,4 @@
     path: "{{ ansistrano_release_path.stdout }}/{{ item }}"
     owner: "{{ app_http_user }}"
     group: "{{ app_http_user }}"
-  loop: "{{ app_writable_paths }}"
+  loop: "{{ app_writable_paths + app_writable_paths_add }}"

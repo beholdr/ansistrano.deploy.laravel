@@ -2,6 +2,7 @@
 app_environment: dev
 app_http_user: www-data
 
+app_exclude_paths_add: []
 app_exclude_paths:
   - .env
   - .git
@@ -11,9 +12,11 @@ app_exclude_paths:
   - storage
   - vendor
 
+app_shared_paths_add: []
 app_shared_paths:
   - storage
 
+app_writable_paths_add: []
 app_writable_paths:
   - bootstrap/cache
   - storage
@@ -26,6 +29,7 @@ app_writable_paths:
   - storage/framework/views
   - storage/logs
 
+app_docker_commands_add: []
 app_docker_commands:
   - command: composer install --prefer-dist --no-progress --no-interaction --optimize-autoloader --no-dev
     root: true

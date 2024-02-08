@@ -84,6 +84,13 @@ The `defaults` role vars:
 - `app_writable_paths`: list of paths to create and set writable
 - `app_docker_commands`: list of commands to run in the docker container on deployment
 
+You can override these vars or, if you just want to add some items to lists without overriding defaults, you can use `_add` variables:
+
+- `app_exclude_paths_add`
+- `app_shared_paths_add`
+- `app_writable_paths_add`
+- `app_docker_commands_add`
+
 ### Artisan commands with conditions
 
 Every artisan command can include `enabled` field to determine if it should run.
