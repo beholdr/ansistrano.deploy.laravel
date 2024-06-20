@@ -91,6 +91,8 @@ You can override these vars or, if you just want to add some items to lists with
 - `app_writable_paths_add`
 - `app_docker_commands_add`
 
+> Please note that paths in the `app_exclude_paths_add` list should start with `/` if you want to target only top level items. For example if you add to the list `vendor` it will exclude not only project-root `vendor` but any `vendor` deep in the hierarchy. If you want to exclude only project-root `vendor` use `/vendor`.
+
 ### Artisan commands with conditions
 
 Every artisan command can include `enabled` field to determine if it should run.

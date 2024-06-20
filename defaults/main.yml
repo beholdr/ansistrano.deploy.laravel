@@ -4,13 +4,13 @@ app_http_user: www-data
 
 app_exclude_paths_add: []
 app_exclude_paths:
-  - .env
-  - .git
-  - bootstrap/cache
-  - database/*.sqlite*
-  - node_modules
-  - storage
-  - vendor
+  - /.env
+  - /.git
+  - /bootstrap/cache
+  - /database/*.sqlite*
+  - /node_modules
+  - /storage
+  - /vendor
 
 app_shared_paths_add: []
 app_shared_paths:
