@@ -4,30 +4,30 @@ app_http_user: www-data
 
 app_exclude_paths_add: []
 app_exclude_paths:
-  - .env
-  - .git
-  - bootstrap/cache
-  - database/*.sqlite*
-  - node_modules
-  - storage
-  - vendor
+  - "{{ ansistrano_deploy_from }}/.env"
+  - "{{ ansistrano_deploy_from }}/.git"
+  - "{{ ansistrano_deploy_from }}/bootstrap/cache"
+  - "{{ ansistrano_deploy_from }}/database/*.sqlite*"
+  - "{{ ansistrano_deploy_from }}/node_modules"
+  - "{{ ansistrano_deploy_from }}/storage"
+  - "{{ ansistrano_deploy_from }}/vendor"
 
 app_shared_paths_add: []
 app_shared_paths:
-  - storage
+  - "{{ ansistrano_deploy_from }}/storage"
 
 app_writable_paths_add: []
 app_writable_paths:
-  - bootstrap/cache
-  - storage
-  - storage/app
-  - storage/app/public
-  - storage/framework
-  - storage/framework/cache
-  - storage/framework/cache/data
-  - storage/framework/sessions
-  - storage/framework/views
-  - storage/logs
+  - "{{ ansistrano_deploy_from }}/bootstrap/cache"
+  - "{{ ansistrano_deploy_from }}/storage"
+  - "{{ ansistrano_deploy_from }}/storage/app"
+  - "{{ ansistrano_deploy_from }}/storage/app/public"
+  - "{{ ansistrano_deploy_from }}/storage/framework"
+  - "{{ ansistrano_deploy_from }}/storage/framework/cache"
+  - "{{ ansistrano_deploy_from }}/storage/framework/cache/data"
+  - "{{ ansistrano_deploy_from }}/storage/framework/sessions"
+  - "{{ ansistrano_deploy_from }}/storage/framework/views"
+  - "{{ ansistrano_deploy_from }}/storage/logs"
 
 app_docker_commands_add: []
 app_docker_commands:
