@@ -79,6 +79,7 @@ The `defaults` role vars:
 
 - `app_environment`: environment (default: `dev`)
 - `app_http_user`: user name for files ownership (default `www-data`)
+- `app_root_user`: user name for root (default `root`)
 - `app_exclude_paths`: list of paths to exclude by rsync
 - `app_shared_paths`: list of paths to use as shared between releases
 - `app_writable_paths`: list of paths to create and set writable
