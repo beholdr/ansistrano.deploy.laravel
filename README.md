@@ -85,12 +85,6 @@ Then add inline encrypted secret vars in your inventory:
 ```yml
 ---
 servers:
-  vars:
-    # for all environments
-    vault_app_secret: !vault |
-                      $ANSIBLE_VAULT;1.2;AES256;dev
-                      303435316463376165666363316...3136
-
   hosts:
     dev:
       ansible_user: root
@@ -99,7 +93,7 @@ servers:
       app_url: dev.sitename.com
       app_path: /srv/sitename-dev
       app_environment: dev
-      # for the current environment
+      # encrypted var for the current environment
       vault_app_secret_dev: !vault |
                             $ANSIBLE_VAULT;1.2;AES256;dev
                             3735363836303930623263613...3864
