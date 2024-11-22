@@ -38,10 +38,7 @@ app_docker_commands:
     root: true
   - command: php artisan storage:link
     root: true
-  - command: php artisan config:cache
-  - command: php artisan route:cache
-  - command: php artisan view:cache
-  - command: php artisan event:cache
+  - command: php artisan optimize
   - command: php artisan migrate --force
 
 app_docker_exec: "docker compose exec --user {{ app_http_user }} php sh -c 'cd releases/{{ ansistrano_release_version }} && {{ item.command }}'"

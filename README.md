@@ -146,9 +146,6 @@ By default commands run as `app_http_user`. But some commands (e.g. `composer in
   root: true
 - command: php artisan storage:link
   root: true
-- command: php artisan config:cache
-- command: php artisan route:cache
-- command: php artisan view:cache
-- command: php artisan event:cache
+- command: php artisan optimize
 - command: php artisan migrate --force
 ```
