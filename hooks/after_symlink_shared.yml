@@ -1,5 +1,4 @@
 ---
-- include_tasks: ../tasks/env.yml
 - include_tasks: ../tasks/writable.yml
 - include_tasks: ../tasks/docker.yml
 - include_tasks: ../tasks/commands.yml

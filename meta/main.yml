@@ -9,4 +9,5 @@ dependencies:
 
       ansistrano_shared_paths: "{{ app_shared_paths + app_shared_paths_add }}"
 
+      ansistrano_after_update_code_tasks_file: hooks/after_update_code.yml
       ansistrano_after_symlink_shared_tasks_file: hooks/after_symlink_shared.yml
