@@ -1,5 +1,6 @@
 ---
 app_environment: dev
+app_container_name: php
 app_http_user: www-data
 app_root_user: root
 
@@ -41,5 +42,5 @@ app_docker_commands:
   - command: php artisan optimize
   - command: php artisan migrate --force
 
-app_docker_exec: "docker compose exec --user {{ app_http_user }} php sh -c 'cd releases/{{ ansistrano_release_version }} && {{ item.command }}'"
-app_docker_exec_as_root: "docker compose exec --user {{ app_root_user }} php sh -c 'cd releases/{{ ansistrano_release_version }} && {{ item.command }}'"
+app_docker_exec: "docker compose exec --user {{ app_http_user }} {{ app_container_name }} sh -c 'cd releases/{{ ansistrano_release_version }} && {{ item.command }}'"
+app_docker_exec_as_root: "docker compose exec --user {{ app_root_user }} {{ app_container_name }} sh -c 'cd releases/{{ ansistrano_release_version }} && {{ item.command }}'"

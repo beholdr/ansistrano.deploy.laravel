@@ -104,6 +104,7 @@ servers:
 The `defaults` role vars:
 
 - `app_environment`: environment (default: `dev`)
+- `app_container_name`: app container name (default: `php`)
 - `app_http_user`: user name for files ownership (default `www-data`)
 - `app_root_user`: user name for root (default `root`)
 - `app_exclude_paths`: list of paths to exclude by rsync
