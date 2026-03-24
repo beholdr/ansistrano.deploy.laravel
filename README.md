@@ -4,11 +4,13 @@ Ansible role for simple deployment of a Laravel app with [ansistrano.deploy](htt
 
 ## Install
 
-Ansistrano role uses [ansible.posix](https://galaxy.ansible.com/ui/repo/published/ansible/posix/) collection, so you need to install it too. You can use `requirements.yml` file:
+You should pin `ansistrano.deploy` to 4.0.0 version. Also Ansistrano role uses [ansible.posix](https://galaxy.ansible.com/ui/repo/published/ansible/posix/) collection, so you need to install it too. You can use `requirements.yml` file:
 
 ```yml
 ---
 roles:
+  - name: ansistrano.deploy
+    version: 4.0.0
   - name: ansistrano.deploy.laravel
     src: https://github.com/beholdr/ansistrano.deploy.laravel
 
