@@ -1,6 +1,6 @@
 ---
 - name: Normalize release path permissions
   ansible.builtin.file:
-    path: "{{ ansistrano_release_path.stdout }}"
+    path: "{{ ansistrano_release_path }}"
     state: directory
-    mode: 0755
+    mode: "0755"
