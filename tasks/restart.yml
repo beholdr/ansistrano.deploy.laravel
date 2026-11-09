@@ -1,0 +1,5 @@
+---
+- name: Service restart...
+  ansible.builtin.command:
+    cmd: "docker compose restart {{ app_container_name }}"
+    chdir: "{{ ansistrano_release_path.stdout }}"
